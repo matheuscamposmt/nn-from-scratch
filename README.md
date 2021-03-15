@@ -3,8 +3,8 @@ In april I created a Neural Network from scratch in python and I want to share i
 
 The Network has around 98% accuracy in the divorce dataset using sigmoid function and 2 hidden layers (the first one with 8 neurons and the second with 4), but it can be used in other datasets.
 
-The divorce dataset I used: https://archive.ics.uci.edu/ml/datasets/Divorce+Predictors+data+set
-Each question is classified on a scale of 0 to 4.
+The divorce dataset I used: https://archive.ics.uci.edu/ml/datasets/Divorce+Predictors+data+set,
+each question is classified on a scale of 0 to 4.
 
 The description of each attribute below:
 
