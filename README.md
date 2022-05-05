@@ -2,8 +2,8 @@
 
 The Network has around 98% accuracy on the divorce test dataset. I'm using a sigmoid function and 2 hidden layers (the first with 8 neurons and the second one with 4 neurons). It can be used on other datasets.
 
-The divorce dataset I used: https://archive.ics.uci.edu/ml/datasets/Divorce+Predictors+data+set,
-each question is classified on a scale of 0 to 4.
+The divorce dataset I used: https://archive.ics.uci.edu/ml/datasets/Divorce+Predictors+data+set.
+Each question is classified on a scale of 0 to 4.
 
 The description of each attribute below:
 
