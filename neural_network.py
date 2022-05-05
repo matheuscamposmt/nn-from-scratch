@@ -5,7 +5,6 @@ from sklearn.metrics import mean_squared_error,log_loss, accuracy_score
 import pandas as pd
 
 
-
 def config_dataset(dataset,y,sep=',',test_size=0.2,scaler=StandardScaler):
     df = pd.read_csv(dataset,sep=sep)
     X = df.drop(columns=[y])
@@ -71,13 +70,8 @@ class NeuralNetwork():  # 2 hidden layers neural network
             self.output = output
 
             cost = mean_squared_error(training_outputs,self.output)
-            
-
             #cost = log_loss(training_outputs,a3)
-            
             self.cost.append(cost)
-
-
 
             dLoss_Yh =  - 2 * (training_outputs - self.output)
             #dLoss_Yh =  - (training_outputs - self.output) / self.output * (1 - self.output)
@@ -93,7 +87,6 @@ class NeuralNetwork():  # 2 hidden layers neural network
             dZ3_B3 = 1
             dLoss_B3 = np.sum(dLoss_Z3, axis=0)
             adjustmentb3 = self.lr * dLoss_B3
-
 
             # 3
             # ------------------------------------------------------#
@@ -167,8 +160,6 @@ class NeuralNetwork():  # 2 hidden layers neural network
 
 Xtrain, Xtest, ytrain, ytest = config_dataset('divorce.csv', 'Class',sep=';',test_size=0.3)
 #Xtrain, Xtest, ytrain, ytest = config_dataset('diabetes.data', 'class',sep=',',test_size=0.4)
-
-
 
 nn = NeuralNetwork(Xtrain)
 nn.train(Xtrain, ytrain)
