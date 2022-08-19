@@ -6,7 +6,7 @@ from sklearn.metrics import mean_squared_error,log_loss, accuracy_score
 import pandas as pd
 
 
-def config_dataset(dataset,y,sep=',',test_size=0.2,scaler=StandardScaler):
+def config_dataset(dataset,y,sep=',',test_size=0.3,scaler=StandardScaler):
     df = pd.read_csv(dataset,sep=sep)
     X = df.drop(columns=[y])
     y_label = df[y].values.reshape(X.shape[0], 1)
@@ -158,7 +158,7 @@ class NeuralNetwork():  # 2 hidden layers neural network
         return accuracy
 
 
-Xtrain, Xtest, ytrain, ytest = config_dataset('divorce.csv', 'Class',test_size=0.3)
+Xtrain, Xtest, ytrain, ytest = config_dataset('divorce.csv', 'Class',test_size=0.33)
 
 nn = NeuralNetwork(Xtrain, iterations=50_000)
 nn.train(Xtrain, ytrain)
