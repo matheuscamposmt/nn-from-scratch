@@ -1,6 +1,6 @@
 # Neural Network from scratch
 
-The Network has around 98% accuracy on the divorce test dataset. I'm using a sigmoid function and 2 hidden layers (the first with 8 neurons and the second one with 4 neurons). It can be used on other datasets.
+The Network has accuracy = 0.9803, precision = 1.0, recall = 0.9583 and f1_score = 0.9787 on the divorce test dataset. I'm using a sigmoid function and 2 hidden layers (the first with 8 neurons and the second one with 4 neurons). It can be used on other datasets.
 
 The divorce dataset I used: https://archive.ics.uci.edu/ml/datasets/Divorce+Predictors+data+set.
 Each question is classified on a scale of 0 to 4.
