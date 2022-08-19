@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.metrics import f1_score, precision_score, recall_score
 from sklearn.metrics import mean_squared_error,log_loss, accuracy_score
 import pandas as pd
 
@@ -11,11 +12,10 @@ def config_dataset(dataset,y,sep=',',test_size=0.2,scaler=StandardScaler):
     y_label = df[y].values.reshape(X.shape[0], 1)
 
     Xtrain, Xtest, ytrain, ytest = train_test_split(X, y_label, test_size=test_size, random_state=2)
-
+   
     sc = scaler()
-    sc.fit(Xtrain)
-    Xtrain = sc.transform(Xtrain)
-    Xtest = sc.transform(Xtest)
+    Xtrain = sc.fit_transform(Xtrain)
+    Xtest = sc.fit_transform(Xtest)
     
     return Xtrain, Xtest, ytrain, ytest
 
@@ -158,12 +158,20 @@ class NeuralNetwork():  # 2 hidden layers neural network
         return accuracy
 
 
-Xtrain, Xtest, ytrain, ytest = config_dataset('divorce.csv', 'Class',sep=';',test_size=0.3)
-#Xtrain, Xtest, ytrain, ytest = config_dataset('diabetes.data', 'class',sep=',',test_size=0.4)
+Xtrain, Xtest, ytrain, ytest = config_dataset('divorce.csv', 'Class',test_size=0.3)
 
-nn = NeuralNetwork(Xtrain)
+nn = NeuralNetwork(Xtrain, iterations=50_000)
 nn.train(Xtrain, ytrain)
 pred = nn.think(Xtest)
 
 accuracy = nn.test(pred,ytest)
-print(accuracy)
+print(f"\nAccuracy = {accuracy}")
+
+precision = precision_score(ytest, pred)
+print(f"Precision = {precision}")
+
+recall = recall_score(ytest, pred)
+print(f"Recall = {recall}")
+
+f1 = f1_score(ytest, pred)
+print(f"F1 score = {f1}")
